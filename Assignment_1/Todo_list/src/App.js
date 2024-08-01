@@ -1,28 +1,54 @@
-import { useState } from "react";
+import { useEffect, useId, useState } from "react";
 import Todos from './components/Todos';
 
 export default function App() {
 
   const [newTask, setNewTask] = useState('');
-  const [tasks, setTasks] = useState([
-    { 'name': 'Task1', 'id': 1 }, 
-    { 'name': 'Task2', 'id': 2 }, 
-    { 'name': 'Task3', 'id': 3 }  
-  ]);
+  const [tasks, setTasks] = useState([]);
+  const [edit, setEdit] = useState(false);
+  const [currentTaskId, setCurrentTaskId] = useState(null);
 
-  function handleSubmit(newTask){
-    setTasks([...tasks, { 'name' : newTask, 'id' : tasks.length + 1 }]);
+  useEffect(() => {
+    (async () => {
+      const res = await fetch('http://localhost:3000/todo');
+      const tasks = await res.json();
+      setTasks(tasks);
+    })()
+  });
+
+  async function handleSubmit(newTask){
+    await fetch(`http://localhost:3000/todo`, {
+      'Content-Type': 'application/json',
+      'method': 'POST',
+      'body': JSON.stringify({ 'name': newTask })
+    });
+    setNewTask('');
   }
 
-  function handleDelete(id){
-    setTasks(tasks.filter(task => task.id !== id));
+  async function handleDelete(id){
+    await fetch(`http://localhost:3000/todo/${id}`, {
+      'method': 'DELETE'
+    });
+  }
+
+  function handleNewInput(taskId){
+    setEdit(!edit);
+    setCurrentTaskId(taskId);
+  }
+
+  async function handleEditSubmit(id, newValue){
+    await fetch(`http://localhost:3000/todo/${id}`, {
+      'method': 'PATCH',
+      'body': JSON.stringify({ 'name': newValue })
+    });
+    setEdit(!edit);
   }
 
   return (
     <div>
-      <input type="text" placeholder="Enter a new task here..." onChange={(e) => setNewTask(e.target.value)} />
+      <input type="text" placeholder="Enter a new task here..." value={newTask} onChange={(e) => setNewTask(e.target.value)} />
       <button onClick={() => handleSubmit(newTask)}>Submit</button> <br />
-      <Todos tasks={tasks} handleDelete={handleDelete}/>
+      <Todos tasks={tasks} handleDelete={handleDelete} handleNewInput={handleNewInput} edit={edit} handleEditSubmit={handleEditSubmit} currentTaskId={currentTaskId}/>
     </div>
   );
 };
