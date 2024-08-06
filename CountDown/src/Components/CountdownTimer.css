@@ -1,0 +1,40 @@
+.timer-container {
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .input-container input {
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+  }
+  
+  .input-container span {
+    margin: 0 5px;
+  }
+  
+  .button-container {
+    margin-bottom: 10px;
+  }
+  
+  .button-container button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .time-display h1 {
+    font-size: 48px;
+    margin: 0;
+  }
+  
