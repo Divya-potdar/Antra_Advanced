@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import countdownReducer from '../Reducers/reducers'; // Adjust import path if necessary
+import countdownReducer from '../Reducers/reducers'; 
 
 const store = configureStore({
   reducer: {
