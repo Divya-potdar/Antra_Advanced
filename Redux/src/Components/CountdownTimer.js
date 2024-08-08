@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setTime, startTimer, pauseResumeTimer, resetTimer, decrementTime } from '../Reducers/reducers'; // Adjust import path if necessary
-
+import { setTime, startTimer, pauseResumeTimer, resetTimer, decrementTime } from '../Reducers/reducers'; 
 const CountdownTimer = () => {
   const dispatch = useDispatch();
   const { time, isActive, isPaused } = useSelector((state) => state.countdown);
