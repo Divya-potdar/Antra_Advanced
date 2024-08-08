@@ -6,7 +6,7 @@ const initialState = {
   isPaused: false,
 };
 
-const countdownSlice = createSlice({
+const countdown = createSlice({
   name: 'countdown',
   initialState,
   reducers: {
@@ -33,6 +33,6 @@ const countdownSlice = createSlice({
   },
 });
 
-export const { setTime, startTimer, pauseResumeTimer, resetTimer, decrementTime } = countdownSlice.actions;
+export const { setTime, startTimer, pauseResumeTimer, resetTimer, decrementTime } = countdown.actions;
 
-export default countdownSlice.reducer;
+export default countdown.reducer;
