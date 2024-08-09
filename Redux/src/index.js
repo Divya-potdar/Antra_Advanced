@@ -1,13 +1,16 @@
-// index.js
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+import ReactDOM from 'react-dom/client';
+import './index.css';
 import App from './App';
-import store from './Store/store';
-
-ReactDOM.render(
-  <Provider store={store}>
+import MyContextProvider from './Components/contextProvider';
+import reportWebVitals from "./reportWebVitals";
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <MyContextProvider>
     <App />
-  </Provider>,
-  document.getElementById('root')
+    </MyContextProvider>
+ 
 );
+
+
+reportWebVitals();
