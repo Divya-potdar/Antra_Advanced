@@ -1,0 +1,70 @@
+/* SearchBar.css */
+
+/* Container for the search bar and dropdown */
+.search-bar-container {
+    position: relative;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+  
+  /* Style for the input field */
+  .search-bar-input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    outline: none;
+  }
+  
+  /* Style for the submit button */
+  .search-bar-button {
+    margin-top: 10px;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-bar-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Style for the suggestion dropdown */
+  .suggestions-list {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    margin-top: 5px;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+  }
+  
+  /* Style for individual suggestion items */
+  .suggestion-item {
+    padding: 12px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .suggestion-item.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
